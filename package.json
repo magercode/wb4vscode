@@ -1,0 +1,66 @@
+{
+  "name": "wb4vscode",
+  "displayName": "WB4VSCode",
+  "description": "WibuScript (WB-Rust) support: syntax highlighting, autocomplete, and runner",
+  "version": "0.1.0",
+  "publisher": "adjisoft",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:wibuscript",
+    "onCommand:wb4vscode.runFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "wibuscript",
+        "aliases": ["WibuScript", "WB"],
+        "extensions": [".wb", ".wbs"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "wibuscript",
+        "scopeName": "source.wb",
+        "path": "./syntaxes/wb.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "wb4vscode.runFile",
+        "title": "WB: Run Current File"
+      }
+    ],
+    "configuration": {
+      "title": "WB4VSCode",
+      "properties": {
+        "wb4vscode.wibuPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path ke binary wibu (wibu). Jika kosong, extension mencoba auto-detect."
+        },
+        "wb4vscode.autoDetectBinary": {
+          "type": "boolean",
+          "default": true,
+          "description": "Coba deteksi otomatis binary wibu dari folder workspace."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

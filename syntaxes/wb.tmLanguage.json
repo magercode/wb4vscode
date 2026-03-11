@@ -1,0 +1,77 @@
+{
+  "name": "WibuScript",
+  "scopeName": "source.wb",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#builtins" },
+    { "include": "#constants" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.wb", "match": "//.*$" },
+        {
+          "name": "comment.block.wb",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.wb",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.wb", "match": "\\\\(n|t|r|\\\\|\"|')" }
+          ]
+        },
+        {
+          "name": "string.quoted.single.wb",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            { "name": "constant.character.escape.wb", "match": "\\\\(n|t|r|\\\\|\"|')" }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.wb", "match": "\\b\\d+(?:\\.\\d+)?\\b" }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.wb",
+          "match": "\\b(bikin|fun|kalo|ato|bentar|ulang|di|balikin|baka|lanjut|berhenti|butuh|ekspor|nani|yamete|sugoi)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.wb",
+          "match": "\\b(baka|bakaf|format|input|panjang|tipe|angka|teks|stdout|stderr|baca_file|tulis_file|append_file|cwd|env_get|env_set|sqrt|sin|cos|tan|pow|abs|floor|ceil|round|regex_cocok|regex_cari|regex_ganti|tcp_connect|tcp_listen|tcp_accept|tcp_send|tcp_recv|tcp_local_addr|tcp_close|udp_bind|udp_send|udp_recv|udp_local_addr|udp_close)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        { "name": "constant.language.boolean.wb", "match": "\\b(true|false)\\b" },
+        { "name": "constant.language.nil.wb", "match": "\\b(nil|kosong)\\b" }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        { "name": "keyword.operator.wb", "match": "==|!=|<=|>=|&&|\\|\\||\\+\\+|--|[+\\-*/%<>=!]" }
+      ]
+    }
+  }
+}
